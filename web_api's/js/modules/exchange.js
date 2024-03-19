@@ -3,7 +3,7 @@
 goExchange();
 
 async function goExchange() {
-  const res = await requestExchangeRate();
+  //const res = await requestExchangeRate();
   alert('한국수출입은행 CORS 정책에 위배되어 응답을 가져올 수 없어요!')
 }
 

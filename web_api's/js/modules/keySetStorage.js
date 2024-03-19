@@ -24,7 +24,7 @@ function editList(e) {
     keySet = document.getElementById('key').value;
     description = document.getElementById('description').value;
 
-    const keyStrings = `${keySet} : ${description}`;
+    //const keyStrings = `${keySet} : ${description}`;
     const buttonFlag = e.target.id;
 
     switch (buttonFlag) {
