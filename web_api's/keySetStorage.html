@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="davidev">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로컬스토리지</title>
+    <style>
+        footer {
+          margin-top: 80px;
+          padding: 2px;
+          text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>단축키를 저장하는 서비스입니다!</h1>
+    </header>
+    <section id="listArea">
+        <fieldset>
+            <legend>
+                <h2>현재 등록된 단축키</h2>
+            </legend>
+            <ul id="list">
+            </ul>
+        </fieldset>
+    </section>
+    <hr>
+    <br>
+    <section id="editArea">
+        <p>
+            <label for="key">키셋 : <input type="text" id="key" size="50px" placeholder="ex) Command + Alt + Del" autocomplete="on"></label>
+        </p>
+        <p>
+            <label for="description">설명 : <input type="text" id="description" size="50px" placeholder="ex) 전체 선택" autocomplete="on"></label>
+        </p>
+        <p id="buttonArea">
+            <button type="button" name="btns" id="add">추가</button>
+            <button type="button" name="btns" id="remove">삭제</button>
+        </p>
+    </section>
+    <footer>
+        <p>&lt;Copyright 2024 Davidev All right reserved.&gt;</p>
+    </footer>
+</body>
+<script src="js/modules/keySetStorage.js"></script>
+
+</html>

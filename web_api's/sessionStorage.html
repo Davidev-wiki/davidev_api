@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta author="davidev" contents="storage">
+    <meta keywords="Web Storage, local Storage">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세션스토리지에 읽기/쓰기</title>
+</head>
+
+<body>
+    <h3>세션 스토리지에 구입 리스트 저장/검색</h3>
+    <p>
+      세션 스토리지는 현재 브라우저의 현재 탭에서 계속 작업하면 유지.
+      다른 탭으로 전환하거나 윈도우 종료시 데이터가 사라진다.
+    </p>
+    <hr>
+    <label>품목명 : <input type="text" id="item"></label>
+    <label>개수 : <input type="text" id="count"></label>
+    <button type="button" id="save" onclick="store()">저장</button>
+    <button type="button" id="retrieve" onclick="retrieve()">검색</button>
+</body>
+
+<script src="./js/modules/sessionStorage.js"></script>
+
+</html>
