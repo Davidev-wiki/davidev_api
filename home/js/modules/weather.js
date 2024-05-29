@@ -14,7 +14,7 @@ async function init() {
 /* OpenWeatherMap 날씨 요청 메서드 */
 async function requestWeather() {
   const key = "23a93b0b3bafbd17bc6bfaa741906d2d";
-  const requestLocation = `http://api.openweathermap.org/geo/1.0/direct?q=Seoul&limit=5&appid=${key}`;
+  const requestLocation = `https://api.openweathermap.org/geo/1.0/direct?q=Seoul&limit=5&appid=${key}`;
   try {
     const result = await fetch(requestLocation)
     const jsonResult = await result.json();
