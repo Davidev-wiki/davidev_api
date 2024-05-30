@@ -1,8 +1,7 @@
-window.onload = function() {
   kakao.maps.load(() => {
     requestMap()
   });
-}
+
 function requestMap() {
   /* key : 8bb01530fa66d976bcf0c13b83203cff */
   // 현재의 위도와 경도를 가져온 후 api 호출
