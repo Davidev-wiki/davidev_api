@@ -3,23 +3,25 @@
 goExchange();
 
 async function goExchange() {
-  //const res = await requestExchangeRate();
-  alert('한국수출입은행 CORS 정책에 위배되어 응답을 가져올 수 없어요!')
+  const res = await requestExchangeRate();
+  //alert('한국수출입은행 CORS 정책에 위배되어 응답을 가져올 수 없어요!')
 }
 
 async function requestExchangeRate() {
-  const proxyForCORS = 'https://cors-proxy.htmldriven.com/?url='
+  //const proxyForCORS = 'https://cors-proxy.htmldriven.com/?url='
   const key = '44MvmmlvkDGz7DOh6cDQdugvy0K7VTUH'
-  const url = proxyForCORS + 'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=' + key +
+  const url = 'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=' + key +
     '&searchdate=' + getCurrentDate() + '&data=AP01'
   // AP01 : 환율, AP02 : 대출금리, AP03 : 국제금리
-  /* 막혀서 못쓰게 됨. */
-  //const url = "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/krw.json";
+
+  console.log(`url >>> : ${url}`)
+
   try {
     const response = await fetch(url);
+
     let result = await response.json();
+
     result = getCurrency(result);
-    console.log(result)
     setCurrency(result);
   } catch (error) {
     console.error('자료를 받아오는데 에러가 발생했어요! >>> :', error);
@@ -28,26 +30,14 @@ async function requestExchangeRate() {
 }
 
 function getCurrency(result) {
-  // 1원 대비 통화가치 (usd, jpy, cny, eur)
-  const krwCurrency = result.krw;
-  const currency = {};
 
-  const krwToUsd = krwCurrency.usd; // 1원에 해당하는 달러 : 현재 0.75
-  const UsdToKrw = 1 / krwToUsd; // 1달러에 해당하는 원 : 현재 1331.1
+  const currency = {
 
-  const krwToJpy = krwCurrency.jpy; // 1원에 해당하는 엔 :
-  const jpyToKrw = 1 / krwToJpy; // 1달러에 해당하는 원 : 현재 1331.1
-
-  const krwToCny = krwCurrency.cny; // 1원에 해당하는 달러 : 현재 0.75
-  const cnyToKrw = 1 / krwToCny; // 1달러에 해당하는 원 : 현재 1331.1
-
-  const krwToEur = krwCurrency.eur; // 1원에 해당하는 엔 :
-  const eurToKrw = 1 / krwToEur; // 1달러에 해당하는 원 : 현재 1331.1
-
-  currency.usd = UsdToKrw.toFixed(1);
-  currency.eur = eurToKrw.toFixed(1);
-  currency.cny = cnyToKrw.toFixed(1);
-  currency.jpy = (jpyToKrw * 100).toFixed(1);
+    cnhCurrency : result[6].deal_bas_r,
+    eurCurrency : result[8].deal_bas_r,
+    jpyCurrency : result[12].deal_bas_r,
+    usdCurrency : result[22].deal_bas_r,
+  }
 
   return currency;
 }
@@ -55,10 +45,10 @@ function getCurrency(result) {
 function setCurrency(result) {
   const title = "오늘의 환율 정보";
   const message = `
-        1달러 = ${result.usd} 원<br>
-        1유로 = ${result.eur} 원<br>
-        100위안 = ${result.cny} 원<br>
-        100엔 = ${result.jpy} 원<br>`;
+        1달러 = ${result.usdCurrency} 원<br>
+        1유로 = ${result.eurCurrency} 원<br>
+        100위안 = ${result.cnhCurrency} 원<br>
+        100엔 = ${result.jpyCurrency} 원<br>`;
 
   $("#content-title").text(title);
   $("#content-wrapper").html(message);
