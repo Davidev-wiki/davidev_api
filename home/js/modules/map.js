@@ -68,7 +68,6 @@ function requestMap() {
       console.log(message);
     });
 
-
   });
 }
 
