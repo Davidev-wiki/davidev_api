@@ -23,6 +23,8 @@ async function requestExchangeRate() {
 
   } catch (error) {
     console.error('자료를 받아오는데 에러가 발생했어요! >>> :', error);
+    alert('현재 브라우저에서는 CORS 정책 위반으로 불러올 수 없습니다.');
+
   }
 
 }
