@@ -3,9 +3,10 @@ init();
 async function init() {
   const res= await requestWeather();
 
-  let msg = '현재 위치는 ' + res.locName + '입니다. 😄<br>'
-      msg += '현재 온도는 '+ res.temp + '℃ 이며, ' + res.description + ' 상태입니다.<br>'
-      msg += '최저 기온은 '+ res.temp_Min + '℃, 최고 기온은 '+ res.temp_Max+ '℃ 입니다.';
+  let msg = '현재 위치는 ' + res.locName + '입니다.<br>'
+      msg += '현재 온도는 '+ res.temp + '℃ 이며, ' + res.description + ' 상태 😄 입니다.<br>'
+      msg += '최저 기온은 '+ res.temp_Min + '℃, 최고 기온은 '+ res.temp_Max+ '℃ 입니다.'
+      msg += '오늘도 좋은 하루 되세요 ^ㅁ^!!';
 
   const content = document.querySelector('#content')
   content.innerHTML = msg

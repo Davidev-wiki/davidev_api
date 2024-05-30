@@ -11,8 +11,6 @@ async function requestExchangeRate() {
     '&searchdate=' + getCurrentDate() + '&data=AP01'
   // AP01 : 환율, AP02 : 대출금리, AP03 : 국제금리
 
-  console.log(`url >>> : ${url}`)
-
   try {
     const response = await fetch(url);
 
